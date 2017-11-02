@@ -22,9 +22,6 @@ RUN rm -rf $ANDROID_HOME/sdk.zip
 
 RUN echo yes | $ANDROID_HOME/tools/bin/sdkmanager "add-ons;addon-google_apis-google-24" "emulator" "platform-tools" "platforms;android-24" "sources;android-24" "system-images;android-24;google_apis;armeabi-v7a" "tools"
 
-RUN echo | $ANDROID_HOME/tools/bin/avdmanager create avd -n Android_24_arm -k "system-images;android-24;google_apis;armeabi-v7a"
+RUN $ANDROID_HOME/tools/bin/avdmanager create avd -n Android_24_arm -k "system-images;android-24;google_apis;armeabi-v7a" | echo no
 
-EXPOSE 8080
-
-EXPOSE 50000
 
