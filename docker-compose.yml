@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+
+  android:
+    build: .
+    container_name: carlitodroiddddd
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - android_sdk:/usr/share/jenkins/ref/sdk
+volumes:
+  jenkins_home:
+  android_sdk:
