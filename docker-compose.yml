@@ -1,9 +1,8 @@
 version: "3.3"
 services:
-
   android:
     build: .
-    container_name: carlitodroiddddd
+    container_name: ajcontainer
     ports:
       - "8080:8080"
       - "50000:50000"
