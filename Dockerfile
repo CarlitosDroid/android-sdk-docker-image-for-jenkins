@@ -1,22 +1,26 @@
 FROM jenkins/jenkins:latest
 
-MAINTAINER Bertrand Martel <bmartel.fr@gmail.com>
+MAINTAINER Carlos Leonardo Camilo Vargas Huamán <carlosleonardovargashuaman@gmail.com>
 
 USER root
 
-RUN apt-get update && apt-get install -y lib32stdc++6 lib32z1 build-essential file
+RUN apt-get update && apt-get install
+
+#USER jenkins
 
 ARG ANDROID_SDK_URL_FOR_LINUX=https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 
-ENV ANDROID_HOME /usr/share/jenkins/ref/sdk
+ENV ANDROID_HOME /var/jenkins_home/sdk
 
 RUN mkdir -p $ANDROID_HOME
 
-RUN curl -o $ANDROID_HOME/sdk.zip ${ANDROID_SDK_URL_FOR_LINUX}
+RUN curl -o $ANDROID_HOME ${ANDROID_SDK_URL_FOR_LINUX}
 
-RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
+#RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
 
-RUN rm -rf $ANDROID_HOME/sdk.zip
+#RUN rm -rf $ANDROID_HOME/sdk.zip
+
+#RUN
 
 
 
