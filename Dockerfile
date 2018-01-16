@@ -20,6 +20,10 @@ RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
 
 RUN rm -rf $ANDROID_HOME/sdk.zip
 
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+
 #RUN echo yes | $ANDROID_HOME/tools/bin/sdkmanager "tools" "emulator" "extras;android;m2repository" "extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1"
 
 #RUN echo yes | $ANDROID_HOME/tools/bin/sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
