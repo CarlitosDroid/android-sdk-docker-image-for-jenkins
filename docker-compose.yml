@@ -1,5 +1,9 @@
 version: "3.3"
 services:
+  jfrog:
+    image: docker.bintray.io/jfrog/artifactory-oss:latest
+    ports:
+      - "8081:8081"
   android:
     environment:
       - LC_ALL=en_US.UTF-8
@@ -12,6 +16,8 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home
       - android_sdk:/usr/share/jenkins/ref/sdk
+    links:
+      - jfrog
 volumes:
   jenkins_home:
   android_sdk:
