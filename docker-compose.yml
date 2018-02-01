@@ -16,7 +16,7 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home
       - android_sdk:/usr/share/jenkins/ref/sdk
-    links:
+    depends_on:
       - jfrog
 volumes:
   jenkins_home:
