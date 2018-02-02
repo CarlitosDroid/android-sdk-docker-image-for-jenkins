@@ -7,7 +7,6 @@
 FROM jenkins/jenkins:latest
 
 ARG ANDROID_SDK_URL_FOR_LINUX=https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
-#ARG jfrog_port=8081
 
 ENV ANDROID_HOME /usr/share/jenkins/ref/sdk
 
@@ -25,11 +24,10 @@ COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
-#RUN echo yes | $ANDROID_HOME/tools/bin/sdkmanager "tools" "emulator" "extras;android;m2repository" "extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1"
-
-#RUN echo yes | $ANDROID_HOME/tools/bin/sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
-
-#EXPOSE ${jfrog_port}
+RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "emulator" "extras;android;m2repository" \
+"extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1" \
+"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
+"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
 
 USER root
 
